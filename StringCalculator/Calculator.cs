@@ -27,9 +27,9 @@ namespace StringCalculator
         {
             if (input.StartsWith("//"))
             {
-                var newdelimiter = input.Split('\n')[0].Replace("//", "").ToCharArray();
-                delimiters.Add(newdelimiter[0]);
-                input = input.Replace("//" + newdelimiter[0] + "\n", "");
+                var newDelimiter = input.Split('\n')[0].Replace("//", "").ToCharArray()[0];
+                delimiters.Add(newDelimiter);
+                input = input.Replace("//" + newDelimiter + "\n", "");
             }
             var nums = input.Split(delimiters.ToArray());
             return nums;
