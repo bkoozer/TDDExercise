@@ -13,7 +13,18 @@ namespace StringCalculator
         public int Add(string input)
         {
             if (String.IsNullOrEmpty(input))
-                return 0;
+                return 0;           
+            int total = 0;
+            var nums = ProcessInput(input);
+            foreach (var num in nums)
+            {
+                total += int.Parse(num);
+            }
+            return total;
+        }
+
+        public string[] ProcessInput(string input)
+        {
             if (input.StartsWith("//"))
             {
                 var newdelimiter = input.Split('\n')[0].Replace("//", "").ToCharArray();
@@ -21,12 +32,7 @@ namespace StringCalculator
                 input = input.Replace("//" + newdelimiter[0] + "\n", "");
             }
             var nums = input.Split(delimiters.ToArray());
-            int total = 0;
-            foreach (var num in nums)
-            {
-                total += int.Parse(num);
-            }
-            return total;
+            return nums;
         }
     }
 }
